@@ -6,7 +6,6 @@ require "logstash/util/charset"
 #
 class LogStash::Codecs::S3Plain < LogStash::Codecs::Base
   config_name "s3_plain"
-  milestone 3
 
   public
   def decode(data)
