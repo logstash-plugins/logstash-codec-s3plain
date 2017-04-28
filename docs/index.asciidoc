@@ -1,0 +1,36 @@
+:plugin: s3_plain
+:type: codec
+
+///////////////////////////////////////////
+START - GENERATED VARIABLES, DO NOT EDIT!
+///////////////////////////////////////////
+:version: %VERSION%
+:release_date: %RELEASE_DATE%
+:changelog_url: %CHANGELOG_URL%
+:include_path: ../../../logstash/docs/include
+///////////////////////////////////////////
+END - GENERATED VARIABLES, DO NOT EDIT!
+///////////////////////////////////////////
+
+[id="plugins-{type}-{plugin}"]
+
+=== S3_plain
+
+include::{include_path}/plugin_header.asciidoc[]
+
+==== Description
+
+The "s3_plain" codec is used for backward compatibility with previous version of the S3 Output
+
+
+[id="plugins-{type}s-{plugin}-options"]
+==== S3_plain Codec Configuration Options
+
+This plugin supports the following configuration options plus the <<plugins-{type}s-common-options>> described later.
+
+[cols="<,<,<",options="header",]
+|=======================================================================
+|Setting |Input type|Required
+|=======================================================================
+
+include::{include_path}/{type}.asciidoc[]
