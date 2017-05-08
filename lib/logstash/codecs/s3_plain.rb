@@ -16,11 +16,11 @@ class LogStash::Codecs::S3Plain < LogStash::Codecs::Base
   def encode(event)
     if event.is_a?(LogStash::Event)
 
-      message = "Date: #{event[LogStash::Event::TIMESTAMP]}\n"
-      message << "Source: #{event["source"]}\n"
-      message << "Tags: #{Array(event["tags"]).join(', ')}\n"
+      message = "Date: #{event.get(LogStash::Event::TIMESTAMP)}\n"
+      message << "Source: #{event.get("source")}\n"
+      message << "Tags: #{Array(event.get("tags")).join(', ')}\n"
       message << "Fields: #{event.to_hash.inspect}\n"
-      message << "Message: #{event["message"]}"
+      message << "Message: #{event.get("message")}"
 
       @on_event.call(message)
     else
