@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
 
   s.name            = 'logstash-codec-s3plain'
-  s.version         = '2.0.6'
+  s.version         = '2.0.7'
   s.licenses        = ['Apache License (2.0)']
   s.summary         = "This codec may be used to encode (via outputs) S3plain text format, this make the S3 outputs backward compatible with Logstash 1.4.2"
   s.description     = "This gem is a Logstash plugin required to be installed on top of the Logstash core pipeline using $LS_HOME/bin/logstash-plugin install gemname. This gem is not a stand-alone program"

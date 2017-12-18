@@ -1,3 +1,6 @@
+## 2.0.7
+  - Code cleanup. See https://github.com/logstash-plugins/logstash-codec-s3plain/pull/2
+
 ## 2.0.6
   - Fix some documentation issues
 
