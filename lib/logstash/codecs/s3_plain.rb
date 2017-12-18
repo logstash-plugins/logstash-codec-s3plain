@@ -7,24 +7,21 @@ require "logstash/util/charset"
 class LogStash::Codecs::S3Plain < LogStash::Codecs::Base
   config_name "s3_plain"
 
-  public
+  SOURCE_FIELD = "source".freeze
+  TAGS_FIELD = "tags".freeze
+  MESSAGE_FIELD = "message".freeze
+
   def decode(data)
     raise RuntimeError.new("This codec is only used for backward compatibility with the previous S3 output.")
-  end # def decode
+  end
 
-  public
   def encode(event)
-    if event.is_a?(LogStash::Event)
+    message = "Date: #{event[LogStash::Event::TIMESTAMP]}\n"
+    message << "Source: #{event[SOURCE_FIELD]}\n"
+    message << "Tags: #{Array(event[TAGS_FIELD]).join(', ')}\n"
+    message << "Fields: #{event.to_hash.inspect}\n"
+    message << "Message: #{event[MESSAGE_FIELD]}"
 
-      message = "Date: #{event[LogStash::Event::TIMESTAMP]}\n"
-      message << "Source: #{event["source"]}\n"
-      message << "Tags: #{Array(event["tags"]).join(', ')}\n"
-      message << "Fields: #{event.to_hash.inspect}\n"
-      message << "Message: #{event["message"]}"
-
-      @on_event.call(message)
-    else
-      @on_event.call(event.to_s)
-    end
-  end # def encode
-end # class LogStash::Codecs::S3Plain
+    @on_event.call(message)
+  end
+end
